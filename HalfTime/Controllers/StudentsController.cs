@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using HalfTime.Models;
+using HalfTime.Data;
 
 namespace HalfTime.Controllers
 {
@@ -11,36 +13,50 @@ namespace HalfTime.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
-        // GET: api/Students
-        [HttpGet]
-        public IEnumerable<string> Get()
+        readonly studentsRepository _studentsRepository;
+
+        public StudentsController()
         {
-            return new string[] { "value1", "value2" };
+            _studentsRepository = new studentsRepository();
         }
 
         // GET: api/Students/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public ActionResult GetStudentsByUserId(int id)
         {
-            return "value";
+            var userStudents = _studentsRepository.getUserStudents(id);
+
+            return Ok(userStudents);
         }
 
-        // POST: api/Students
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //// POST: api/Instruments
+        //[HttpPost]
+        //public ActionResult AddInstrument(Instrument createInstrument)
+        //{
+        //    // var newInstrument = _instrumentsRepository.AddInstrument(createInstrument);
 
-        // PUT: api/Students/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //    return Created($"api/instruments/{newInstrument.Id}", newInstrument);
+        //}
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// PUT: api/Instruments/5
+        //[HttpPut("{id}")]
+        //// public ActionResult updateInstrument(int id, Instrument instrumentToUpdate)
+        //{
+        //    if (id != instrumentToUpdate.Id)
+        //    {
+        //        return BadRequest(new { Error = "There was an error" });
+        //    }
+        //    //var instrument = _instrumentsRepository.updateInstrument(instrumentToUpdate);
+        //    // return Ok(instrument);
+        //}
+
+        //// DELETE: api/ApiWithActions/5
+        //[HttpDelete("{id}")]
+        //public ActionResult DeleteInstrument(int id)
+        //{
+        //    //_instrumentsRepository.DeleteInstrument(id);
+
+        //    return Ok("The instrument was deleted");
+        //}
     }
 }

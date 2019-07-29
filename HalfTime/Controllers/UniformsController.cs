@@ -19,11 +19,11 @@ namespace HalfTime.Controllers
         }
 
         // GET: api/Uniforms/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //[HttpGet("{id}", Name = "Get")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST: api/Uniforms
         [HttpPost]
