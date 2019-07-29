@@ -13,36 +13,50 @@ namespace HalfTime.Controllers
     [ApiController]
     public class UniformsController : ControllerBase
     {
-        // GET: api/Uniforms
-        [HttpGet]
-        public IEnumerable<string> Get()
+        readonly uniformsRepository _uniformsRepository;
+
+        public UniformsController()
         {
-            return new string[] { "value1", "value2" };
+            _uniformsRepository = new uniformsRepository();
         }
 
         // GET: api/Uniforms/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpGet("{id}")]
+        public ActionResult GetUniformsByUserId(int id)
+        {
+            var userUniforms = _uniformsRepository.getUserUniforms(id);
+
+            return Ok(userUniforms);
+        }
 
         // POST: api/Uniforms
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult AddUniform(Uniform createUniform)
         {
+            var newUniform = _uniformsRepository.AddUniform(createUniform);
+
+            return Created($"api/uniforms/{newUniform.Id}", newUniform);
         }
 
         // PUT: api/Uniforms/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult updateUniform(int id, Uniform uniformToUpdate)
         {
+            if (id != uniformToUpdate.Id)
+            {
+                return BadRequest(new { Error = "There was an error" });
+            }
+            var uniform = _uniformsRepository.updateUniform(uniformToUpdate);
+            return Ok(uniform);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult DeleteUniform(int id)
         {
+            _uniformsRepository.DeleteUniform(id);
+
+            return Ok("The uniform was deleted");
         }
     }
 }
