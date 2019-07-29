@@ -11,7 +11,7 @@ namespace HalfTime.Data
     public class instrumentsRepository
     {
 
-        const string ConnectionString = "Server=localhost;Database=HalfTime;Trusted_Connection=True;";
+        const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
 
         public IEnumerable <Instrument> getUserInstruments(int id)
         {
