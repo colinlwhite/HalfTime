@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HalfTime.Data;
+using HalfTime.Models;
 
 namespace HalfTime.Controllers
 {
@@ -31,8 +32,11 @@ namespace HalfTime.Controllers
 
         // POST: api/Instruments
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult AddInstrument(Instrument createInstrument)
         {
+            var newInstrument = _instrumentsRepository.AddInstrument(createInstrument);
+
+            return Created($"api/instruments/{newInstrument.Id}", newInstrument);
         }
 
         // PUT: api/Instruments/5
