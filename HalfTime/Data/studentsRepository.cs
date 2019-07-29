@@ -23,5 +23,32 @@ namespace HalfTime.Data
             }
 
         }
+
+        public Student AddStudent(Student newStudentObj)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var newStudent = db.QueryFirstOrDefault<Student>(@"
+                    Insert into student(firstname, lastname, street, city, state, zipcode)
+                    Output inserted.*
+                    Values(@firstname, @lastname, @street, @city, @state, @zipcode)",
+                    new
+                    {
+                        newStudentObj.FirstName,
+                        newStudentObj.LastName,
+                        newStudentObj.Street,
+                        newStudentObj.City,
+                        newStudentObj.State,
+                        newStudentObj.ZipCode,
+                    });
+
+                if (newStudent != null)
+                {
+                    return newStudent;
+                }
+            }
+
+            throw new Exception("Unfortunatley, a new student was not created");
+        }
     }
 }

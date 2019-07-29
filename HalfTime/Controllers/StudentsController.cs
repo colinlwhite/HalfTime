@@ -29,14 +29,14 @@ namespace HalfTime.Controllers
             return Ok(userStudents);
         }
 
-        //// POST: api/Instruments
+        // POST: api/Students
         //[HttpPost]
-        //public ActionResult AddInstrument(Instrument createInstrument)
-        //{
-        //    // var newInstrument = _instrumentsRepository.AddInstrument(createInstrument);
+        public ActionResult AddStudent(Student createStudent)
+        {
+             var newStudent = _studentsRepository.AddStudent(createStudent);
 
-        //    return Created($"api/instruments/{newInstrument.Id}", newInstrument);
-        //}
+            return Created($"api/students/{newStudent.Id}", newStudent);
+        }
 
         //// PUT: api/Instruments/5
         //[HttpPut("{id}")]
