@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HalfTime.Data;
+using HalfTime.Models;
 
 namespace HalfTime.Controllers
 {
@@ -31,20 +32,32 @@ namespace HalfTime.Controllers
 
         // POST: api/Instruments
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult AddInstrument(Instrument createInstrument)
         {
+            var newInstrument = _instrumentsRepository.AddInstrument(createInstrument);
+
+            return Created($"api/instruments/{newInstrument.Id}", newInstrument);
         }
 
         // PUT: api/Instruments/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult updateInstrument(int id, Instrument instrumentToUpdate)
         {
+            if (id != instrumentToUpdate.Id)
+            {
+                return BadRequest(new { Error = "There was an error" });
+            }
+            var instrument = _instrumentsRepository.updateInstrument(instrumentToUpdate);
+            return Ok(instrument);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult DeleteInstrument(int id)
         {
+            _instrumentsRepository.DeleteInstrument(id);
+
+            return Ok("The instrument was deleted");
         }
     }
 }
