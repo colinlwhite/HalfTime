@@ -41,8 +41,14 @@ namespace HalfTime.Controllers
 
         // PUT: api/Instruments/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult updateInstrument(int id, Instrument instrumentToUpdate)
         {
+            if (id != instrumentToUpdate.Id)
+            {
+                return BadRequest(new { Error = "There was an error" });
+            }
+            var instrument = _instrumentsRepository.updateInstrument(instrumentToUpdate);
+            return Ok(instrument);
         }
 
         // DELETE: api/ApiWithActions/5

@@ -51,5 +51,29 @@ namespace HalfTime.Data
 
             throw new Exception("Unfortunatley, a new instrument was not created");
         }
+
+        public Instrument updateInstrument(Instrument instrumentToUpdate)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var updateQuery = @"Update Instrument
+                                    Set Name = @name,
+                                    Condition = @condition,
+                                    Category = @category,
+                                    StudentId = @studentid,
+                                    Description = @description,
+                                    Brand = @brand,
+                                    ModelNumber = @modelnumber
+                                    Where Id = @id";
+
+                var rowsAffected = db.Execute(updateQuery, instrumentToUpdate);
+
+                if (rowsAffected == 1)
+                {
+                    return instrumentToUpdate;
+                }
+                throw new Exception("We could not update the instrument");
+            }
+        }
     }
 }
