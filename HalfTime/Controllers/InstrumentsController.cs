@@ -53,8 +53,11 @@ namespace HalfTime.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult DeleteInstrument(int id)
         {
+            _instrumentsRepository.DeleteInstrument(id);
+
+            return Ok("The instrument was deleted");
         }
     }
 }

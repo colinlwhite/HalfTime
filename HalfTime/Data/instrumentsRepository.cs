@@ -75,5 +75,22 @@ namespace HalfTime.Data
                 throw new Exception("We could not update the instrument");
             }
         }
+
+        public void DeleteInstrument(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameter = new { Id = id };
+
+                var deleteQuery = "Delete from Instrument where Id = @id";
+
+                var rowsAffected = db.Execute(deleteQuery, parameter);
+
+                if (rowsAffected != 1)
+                {
+                    throw new Exception("We couldn't delete the instrument at this time");
+                }
+            }
+        }
     }
 }
