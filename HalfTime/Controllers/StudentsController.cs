@@ -30,7 +30,7 @@ namespace HalfTime.Controllers
         }
 
         // POST: api/Students
-        //[HttpPost]
+        [HttpPost]
         public ActionResult AddStudent(Student createStudent)
         {
              var newStudent = _studentsRepository.AddStudent(createStudent);
@@ -38,25 +38,25 @@ namespace HalfTime.Controllers
             return Created($"api/students/{newStudent.Id}", newStudent);
         }
 
-        //// PUT: api/Instruments/5
-        //[HttpPut("{id}")]
-        //// public ActionResult updateInstrument(int id, Instrument instrumentToUpdate)
-        //{
-        //    if (id != instrumentToUpdate.Id)
-        //    {
-        //        return BadRequest(new { Error = "There was an error" });
-        //    }
-        //    //var instrument = _instrumentsRepository.updateInstrument(instrumentToUpdate);
-        //    // return Ok(instrument);
-        //}
+        // PUT: api/Students/5
+        [HttpPut("{id}")]
+         public ActionResult updateStudent(int id, Student studentToUpdate)
+        {
+            if (id != studentToUpdate.Id)
+            {
+               return BadRequest(new { Error = "There was an error" });
+            }
+            var student = _studentsRepository.updateStudent(studentToUpdate);
+            return Ok(student);
+        }
 
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public ActionResult DeleteInstrument(int id)
-        //{
-        //    //_instrumentsRepository.DeleteInstrument(id);
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public ActionResult DeleteStudent(int id)
+        {
+            _studentsRepository.DeleteStudent(id);
 
-        //    return Ok("The instrument was deleted");
-        //}
+            return Ok("The student was deleted");
+        }
     }
 }

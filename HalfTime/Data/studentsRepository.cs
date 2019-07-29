@@ -50,5 +50,46 @@ namespace HalfTime.Data
 
             throw new Exception("Unfortunatley, a new student was not created");
         }
+
+        public Student updateStudent(Student studentToUpdate)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var updateQuery = @"Update Student
+                                    Set FirstName = @firstname,
+                                    LastName = @lastname,
+                                    Street = @street,
+                                    City = @city,
+                                    State = @state,
+                                    ZipCode = @zipcode
+                                    Where Id = @id";
+
+                var rowsAffected = db.Execute(updateQuery, studentToUpdate);
+
+                if (rowsAffected == 1)
+                {
+                    return studentToUpdate;
+                }
+                throw new Exception("We could not update the student");
+            }
+        }
+
+        public void DeleteStudent(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var parameter = new { Id = id };
+
+                var deleteQuery = "Delete from Student where Id = @id";
+
+                var rowsAffected = db.Execute(deleteQuery, parameter);
+
+                if (rowsAffected != 1)
+                {
+                    throw new Exception("We couldn't delete the student at this time");
+                }
+            }
+        }
+
     }
 }
