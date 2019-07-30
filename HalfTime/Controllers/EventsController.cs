@@ -38,6 +38,15 @@ namespace HalfTime.Controllers
             return Created($"api/events/{newEvent.Id}", newEvent);
         }
 
+        // POST: api/Events/SMS
+        [HttpPost("SMS")]
+        public ActionResult SendTwilioSMS()
+        {
+            _eventsRepository.SendSMS();
+
+            return Ok("The message was sent to your volunteers");
+        }
+
         // PUT: api/Events/5
         [HttpPut("{id}")]
         public ActionResult updateEvent(int id, Event eventToUpdate)

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using HalfTime.Models;
 using System.Data.SqlClient;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace HalfTime.Data
 {
@@ -92,6 +94,24 @@ namespace HalfTime.Data
                     throw new Exception("We couldn't delete the event at this time");
                 }
             }
+        }
+
+        public void SendSMS()
+        {
+            // Find your Account Sid and Token at twilio.com/console
+            // DANGER! This is insecure. See http://twil.io/secure
+            const string accountSid = "ACf52182c66da8da1a8e1d6dee3ea528c7";
+            const string authToken = "997563e65b993d1498bc5537a514a376";
+
+            TwilioClient.Init(accountSid, authToken);
+
+            var message = MessageResource.Create(
+                body: "to succeed, you must study the endgame before everything else.",
+                from: new Twilio.Types.PhoneNumber("+16152586798"),
+                to: new Twilio.Types.PhoneNumber("+12052278229")
+            );
+
+            Console.WriteLine(message.Sid);
         }
     }
 }
