@@ -28,9 +28,9 @@ namespace HalfTime.Data
             using (var db = new SqlConnection(ConnectionString))
             {
                 var newUser = db.QueryFirstOrDefault<User>(@"
-                    Insert into [User](firebaseuid, firstname, lastname, street, city, state, zipcode, phonenumber, isvolunteer)
+                    Insert into [User](firebaseuid, firstname, lastname, street, city, state, zipcode, phonenumber)
                     Output inserted.*
-                    Values(@firebaseuid, @firstname, @lastname, @street, @city, @state, @zipcode, @phonenumber, @isvolunteer)",
+                    Values(@firebaseuid, @firstname, @lastname, @street, @city, @state, @zipcode, @phonenumber)",
                     new
                     {
                         newUserObj.FireBaseUid,
@@ -41,7 +41,6 @@ namespace HalfTime.Data
                         newUserObj.State,
                         newUserObj.ZipCode,
                         newUserObj.PhoneNumber,
-                        newUserObj.isVolunteer,
                     });
 
                 if (newUser != null)
@@ -65,8 +64,7 @@ namespace HalfTime.Data
                                     City = @city, 
                                     State = @state, 
                                     ZipCode = @zipcode, 
-                                    PhoneNumber = @phonenumber,
-                                    isVolunteer = @isvolunteer
+                                    PhoneNumber = @phonenumber
                                     Where Id = @id";
 
                 var rowsAffected = db.Execute(updateQuery, userToUpdate);

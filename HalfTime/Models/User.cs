@@ -16,6 +16,5 @@ namespace HalfTime.Models
         public string State { get; set; }
         public int ZipCode { get; set; }
         public string PhoneNumber { get; set; }
-        public bool isVolunteer { get; set; }
     }
 }
