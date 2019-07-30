@@ -101,7 +101,7 @@ namespace HalfTime.Data
             // Find your Account Sid and Token at twilio.com/console
             // DANGER! This is insecure. See http://twil.io/secure
             const string accountSid = "ACf52182c66da8da1a8e1d6dee3ea528c7";
-            const string authToken = "997563e65b993d1498bc5537a514a376";
+            const string authToken = "982e9a5ce00cfcd6996b7aaa873d420a";
 
             TwilioClient.Init(accountSid, authToken);
 
@@ -115,3 +115,4 @@ namespace HalfTime.Data
         }
     }
 }
+
