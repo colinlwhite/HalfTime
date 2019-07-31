@@ -20,6 +20,15 @@ namespace HalfTime.Controllers
             _uniformsRepository = new uniformsRepository();
         }
 
+        // GET: api/Uniforms/ID/2
+        [HttpGet("ID/{id}")]
+        public ActionResult GetUniformById(int id)
+        {
+            var oneUniform = _uniformsRepository.getUniform(id);
+
+            return Ok(oneUniform);
+        }
+
         // GET: api/Uniforms/5
         [HttpGet("{id}")]
         public ActionResult GetUniformsByUserId(int id)

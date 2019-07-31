@@ -13,6 +13,17 @@ namespace HalfTime.Data
 
         const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
 
+        public Volunteer getVolunteer(int id)
+        {
+            var sql = "select Volunteer.Id, Volunteer.FirstName, Volunteer.LastName, Volunteer.Street, Volunteer.City, Volunteer.State, Volunteer.ZipCode, Volunteer.PhoneNumber from Volunteer where Volunteer.Id = @id";
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var singleVolunteer = db.QueryFirstOrDefault<Volunteer>(sql, new { id });
+                return singleVolunteer;
+
+            }
+        }
+
         public IEnumerable<Volunteer> getUserVolunteers(int id)
         {
             var sql = "select Volunteer.Id, Volunteer.FirstName, Volunteer.LastName, Volunteer.Street, Volunteer.City, Volunteer.State, Volunteer.ZipCode, Volunteer.PhoneNumber from Volunteer join UserVolunteerJoin on Volunteer.Id = UserVolunteerJoin.VolunteerId join [User] u on UserVolunteerJoin.UserId = u.Id where u.Id = @id";

@@ -12,6 +12,17 @@ namespace HalfTime.Data
     {
         const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
 
+        public Uniform getUniform(int id)
+        {
+            var sql = "select Instrument.Id, Instrument.Name, Instrument.Condition, Instrument.Category, Instrument.StudentId, Instrument.Description, Instrument.Brand, Instrument.ModelNumber from Instrument where Instrument.Id = @id";
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var singleUniform = db.QueryFirstOrDefault<Uniform>(sql, new { id });
+                return singleUniform;
+
+            }
+        }
+
         public IEnumerable<Uniform> getUserUniforms(int id)
         {
             var sql = "select Uniform.Id, Uniform.Size, Uniform.Condition, Uniform.StudentId from Uniform join UserUniformJoin on Uniform.Id = UserUniformJoin.UniformId join [User] u on UserUniformJoin.UserId = u.Id where u.Id = @id";

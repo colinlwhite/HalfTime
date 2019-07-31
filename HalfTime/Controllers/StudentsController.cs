@@ -20,6 +20,15 @@ namespace HalfTime.Controllers
             _studentsRepository = new studentsRepository();
         }
 
+        // GET: api/Students/ID/2
+        [HttpGet("ID/{id}")]
+        public ActionResult GetStudentById(int id)
+        {
+            var oneStudent = _studentsRepository.getStudent(id);
+
+            return Ok(oneStudent);
+        }
+
         // GET: api/Students/5
         [HttpGet("{id}")]
         public ActionResult GetStudentsByUserId(int id)
