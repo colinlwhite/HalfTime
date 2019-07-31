@@ -7,6 +7,7 @@ using HalfTime.Models;
 using System.Data.SqlClient;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
+using Microsoft.Extensions.Configuration;
 
 namespace HalfTime.Data
 {
@@ -14,6 +15,12 @@ namespace HalfTime.Data
     {
 
         const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
+        private readonly IConfiguration _config;
+
+        public eventsRepository(IConfiguration config)
+        {
+            _config = config;
+        }
 
         public IEnumerable<Event> getUserEvents(int id)
         {
@@ -101,8 +108,8 @@ namespace HalfTime.Data
 
             using (var db = new SqlConnection(ConnectionString))
             {
-                var accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
-                var authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
+                var accountSid = _config.GetValue<string>("TWILIO_ACCOUNT_SID");
+                var authToken = _config.GetValue<string>("TWILIO_AUTH_TOKEN");
 
                 TwilioClient.Init(accountSid, authToken);
 

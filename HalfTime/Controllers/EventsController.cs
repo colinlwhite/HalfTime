@@ -15,9 +15,9 @@ namespace HalfTime.Controllers
     {
         readonly eventsRepository _eventsRepository;
 
-        public EventsController()
+        public EventsController(eventsRepository eventsRepository)
         {
-            _eventsRepository = new eventsRepository();
+            _eventsRepository = eventsRepository;
         }
 
         // GET: api/Events/5
