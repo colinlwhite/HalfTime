@@ -15,7 +15,7 @@ namespace HalfTime.Data
 
         public Student getStudent(int id)
         {
-            var sql = "select Instrument.Id, Instrument.Name, Instrument.Condition, Instrument.Category, Instrument.StudentId, Instrument.Description, Instrument.Brand, Instrument.ModelNumber from Instrument where Instrument.Id = @id";
+            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student where Student.Id = @id";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var singleStudent = db.QueryFirstOrDefault<Student>(sql, new { id });

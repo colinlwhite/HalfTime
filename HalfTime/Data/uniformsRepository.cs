@@ -14,7 +14,7 @@ namespace HalfTime.Data
 
         public Uniform getUniform(int id)
         {
-            var sql = "select Instrument.Id, Instrument.Name, Instrument.Condition, Instrument.Category, Instrument.StudentId, Instrument.Description, Instrument.Brand, Instrument.ModelNumber from Instrument where Instrument.Id = @id";
+            var sql = "select Uniform.Id, Uniform.Size, Uniform.Condition, Uniform.StudentId from Uniform where Uniform.Id = @id";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var singleUniform = db.QueryFirstOrDefault<Uniform>(sql, new { id });
