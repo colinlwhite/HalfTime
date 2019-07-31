@@ -15,9 +15,9 @@ namespace HalfTime.Controllers
     {
         readonly eventsRepository _eventsRepository;
 
-        public EventsController()
+        public EventsController(eventsRepository eventsRepository)
         {
-            _eventsRepository = new eventsRepository();
+            _eventsRepository = eventsRepository;
         }
 
         // GET: api/Events/5
@@ -36,6 +36,15 @@ namespace HalfTime.Controllers
             var newEvent = _eventsRepository.AddEvent(createEvent);
 
             return Created($"api/events/{newEvent.Id}", newEvent);
+        }
+
+        // POST: api/Events/SMS
+        [HttpPost("SMS")]
+        public ActionResult SendTwilioSMS()
+        {
+            _eventsRepository.SendSMS();
+
+            return Ok("The message was sent to your volunteers");
         }
 
         // PUT: api/Events/5

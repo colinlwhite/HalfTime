@@ -5,6 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using HalfTime.Models;
 using System.Data.SqlClient;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Microsoft.Extensions.Configuration;
 
 namespace HalfTime.Data
 {
@@ -12,6 +15,12 @@ namespace HalfTime.Data
     {
 
         const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
+        private readonly IConfiguration _config;
+
+        public eventsRepository(IConfiguration config)
+        {
+            _config = config;
+        }
 
         public IEnumerable<Event> getUserEvents(int id)
         {
@@ -93,5 +102,35 @@ namespace HalfTime.Data
                 }
             }
         }
+
+        public void SendSMS()
+        {
+
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var accountSid = _config.GetValue<string>("TWILIO_ACCOUNT_SID");
+                var authToken = _config.GetValue<string>("TWILIO_AUTH_TOKEN");
+
+                TwilioClient.Init(accountSid, authToken);
+
+                var currentEvent = db.QueryFirstOrDefault<Event>("Select TOP(1) E.Name, E.Date, E.City, E.State From Event E join UserEventJoin on E.Id = UserEventJoin.Id where UserEventJoin.UserId = 1 and E.Date > GETDATE() ORDER BY E.Date ASC");
+
+                var currentEventTime = currentEvent.Date.ToString("MM/dd/yyyy HH:mm");
+
+                List<string> numbersToMessage = db.Query<string>("select V.PhoneNumber from Volunteer V").ToList();
+
+                foreach (var number in numbersToMessage)
+                {
+                    var message = MessageResource.Create(
+                        body: $"Hey Band Boosters! To begin, thank you for your service so far this season. I just wanted to send a quick reminder about {currentEvent.Name} on {currentEventTime} in {currentEvent.City}, {currentEvent.State}. Please let me know if you have any questions!",
+                        from: new Twilio.Types.PhoneNumber("+16152586798"),
+                        to: new Twilio.Types.PhoneNumber(number)
+                    );
+
+                    Console.WriteLine($"Message to {number} has been {message.Status}.");
+                }
+            }
+        }
     }
 }
+

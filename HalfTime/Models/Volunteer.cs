@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace HalfTime.Models
 {
-    public class User
+    public class Volunteer
     {
         public int Id { get; set; }
-        public string FireBaseUid { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Street { get; set; }

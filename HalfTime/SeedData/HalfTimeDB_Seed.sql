@@ -61,7 +61,6 @@ CREATE TABLE [User] (
     [State] nvarchar(255)  NOT NULL ,
     [ZipCode] int  NOT NULL ,
     [PhoneNumber] nvarchar(255)  NOT NULL ,
-    [isVolunteer] bit  NULL ,
     CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED (
         [Id] ASC
     )
@@ -131,6 +130,20 @@ CREATE TABLE [Uniform] (
     )
 )
 
+CREATE TABLE [Volunteer] (
+    [Id] int IDENTITY(1,1) NOT NULL ,
+    [FirstName] nvarchar(255)  NOT NULL ,
+    [LastName] nvarchar(255)  NOT NULL ,
+    [Street] nvarchar(255)  NOT NULL ,
+    [City] nvarchar(255)  NOT NULL ,
+    [State] nvarchar(255)  NOT NULL ,
+    [ZipCode] int  NOT NULL ,
+    [PhoneNumber] nvarchar(255)  NOT NULL ,
+    CONSTRAINT [PK_Volunteer] PRIMARY KEY CLUSTERED (
+        [Id] ASC
+    )
+)
+
 CREATE TABLE [UserStudentJoin] (
     [Id] int IDENTITY(1,1) NOT NULL ,
     [UserId] int  NOT NULL ,
@@ -163,6 +176,15 @@ CREATE TABLE [UserUniformJoin] (
     [UserId] int  NOT NULL ,
     [UniformId] int  NOT NULL ,
     CONSTRAINT [PK_UserUniformJoin] PRIMARY KEY CLUSTERED (
+        [Id] ASC
+    )
+)
+
+CREATE TABLE [UserVolunteerJoin] (
+    [Id] int IDENTITY(1,1) NOT NULL ,
+    [UserId] int  NOT NULL ,
+    [VolunteerId] int  NOT NULL ,
+    CONSTRAINT [PK_UserVolunteerJoin] PRIMARY KEY CLUSTERED (
         [Id] ASC
     )
 )
@@ -217,6 +239,16 @@ REFERENCES [Uniform] ([Id])
 
 ALTER TABLE [UserUniformJoin] CHECK CONSTRAINT [FK_UserUniformJoin_UniformId]
 
+ALTER TABLE [UserVolunteerJoin] WITH CHECK ADD CONSTRAINT [FK_UserVolunteerJoin_UserId] FOREIGN KEY([UserId])
+REFERENCES [User] ([Id])
+
+ALTER TABLE [UserVolunteerJoin] CHECK CONSTRAINT [FK_UserVolunteerJoin_UserId]
+
+ALTER TABLE [UserVolunteerJoin] WITH CHECK ADD CONSTRAINT [FK_UserVolunteerJoin_VolunteerId] FOREIGN KEY([VolunteerId])
+REFERENCES [Volunteer] ([Id])
+
+ALTER TABLE [UserVolunteerJoin] CHECK CONSTRAINT [FK_UserVolunteerJoin_VolunteerId]
+
 COMMIT TRANSACTION HALFTIMEDB_CREATE
 
 USE [master]
@@ -232,18 +264,18 @@ BEGIN TRANSACTION HALFTIMEDB_SEED
 -- User
 BEGIN
     USE [HalfTimeDB]
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('03985307-16c3-43e9-865e-843fd76ba7b6', 'Colin', 'White', '2206 Erin Ln', 'Nashville', 'TN', '37221', '+1 205 227 8229', 0);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('03985307-16c3-43e9-865e-843fd76ba7b6', 'Volunteer', 'Account', 'Twilio Test', 'Nashville', 'TN', '37221', '+1 205 227 8229', 1);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('03985307-16c3-43e9-865e-88a707eba7b3', 'Galina', 'Winterson', '991 Orin Junction', 'Worcester', 'MA', '01654', '+1 508 603 7117', 1);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('89142645-4e81-4493-864b-923a5b2741c2', 'Phaidra', 'Egglestone', '9 Farwell Plaza', 'San Antonio', 'TX', '78225', '+1 210 447 3597', 1);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('76834709-5524-4438-9daf-3fde09ab3a43', 'Giacomo', 'Abrahamson', '741 1st Hill', 'Colorado Springs', 'CO', '80925', '+1 719 192 4776', 0);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('658be3d3-0f87-4ef2-bfd2-4ac6765e4062', 'Edithe', 'Batha', '3 Fremont Street', 'Charlotte', 'NC', '28205', '+1 704 682 3957', 0);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('271df83d-4457-4530-9b26-4c80fec0a118', 'Miguelita', 'Rosenfelder', '6914 Summerview Drive', 'Sioux Falls', 'SD', '57193', '+1 605 597 9320', 1);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('370930fa-c343-48bc-8bf1-074bd02938a5', 'Babb', 'Balsom', '033 Del Mar Park', 'Pittsburgh', 'PA', '15266', '+1  216 5989', 1);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('a8850cd4-df06-4e0b-a39c-f3560bdd5ae4', 'Vanessa', 'Vannikov', '83 Gateway Point', 'Washington', 'DC', '20067', '+1 202 302 7907', 0);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('0e9d6c82-4d11-4bb6-901e-c09df87e7d30', 'Lucita', 'Livzey', '85 Lunder Plaza', 'Chandler', 'AZ', '85246', '+1 480 345 6270', 1);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('715751a1-73ce-45c1-8745-be7ab7ca460b', 'Kellyann', 'Basile', '09828 Cardinal Pass', 'Lexington', 'KY', '40524', '+1 859 347 8173', 0);
-	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [isVolunteer]) VALUES ('b29f2691-e5d0-4277-a098-c5ecde58be66', 'Sheilah', 'Heintze', '58401 Hollow Ridge Road', 'Lexington', 'KY', '40546', '+1 859 721 9970', 0);
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('03985307-16c3-43e9-865e-843fd76ba7b6', 'Colin', 'White', '2206 Erin Ln', 'Nashville', 'TN', '37221', '+1 205 227 8229');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('03985307-16c3-43e9-865e-843fd76ba7b6', 'Volunteer', 'Account', 'Twilio Test', 'Nashville', 'TN', '37221', '+1 205 227 8229');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('03985307-16c3-43e9-865e-88a707eba7b3', 'Galina', 'Winterson', '991 Orin Junction', 'Worcester', 'MA', '01654', '+1 508 603 7117');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('89142645-4e81-4493-864b-923a5b2741c2', 'Phaidra', 'Egglestone', '9 Farwell Plaza', 'San Antonio', 'TX', '78225', '+1 210 447 3597');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('76834709-5524-4438-9daf-3fde09ab3a43', 'Giacomo', 'Abrahamson', '741 1st Hill', 'Colorado Springs', 'CO', '80925', '+1 719 192 4776');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('658be3d3-0f87-4ef2-bfd2-4ac6765e4062', 'Edithe', 'Batha', '3 Fremont Street', 'Charlotte', 'NC', '28205', '+1 704 682 3957');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('271df83d-4457-4530-9b26-4c80fec0a118', 'Miguelita', 'Rosenfelder', '6914 Summerview Drive', 'Sioux Falls', 'SD', '57193', '+1 605 597 9320');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('370930fa-c343-48bc-8bf1-074bd02938a5', 'Babb', 'Balsom', '033 Del Mar Park', 'Pittsburgh', 'PA', '15266', '+1  216 5989');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('a8850cd4-df06-4e0b-a39c-f3560bdd5ae4', 'Vanessa', 'Vannikov', '83 Gateway Point', 'Washington', 'DC', '20067', '+1 202 302 7907');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('0e9d6c82-4d11-4bb6-901e-c09df87e7d30', 'Lucita', 'Livzey', '85 Lunder Plaza', 'Chandler', 'AZ', '85246', '+1 480 345 6270');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('715751a1-73ce-45c1-8745-be7ab7ca460b', 'Kellyann', 'Basile', '09828 Cardinal Pass', 'Lexington', 'KY', '40524', '+1 859 347 8173');
+	INSERT INTO [dbo].[User] ([FireBaseUid], [FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('b29f2691-e5d0-4277-a098-c5ecde58be66', 'Sheilah', 'Heintze', '58401 Hollow Ridge Road', 'Lexington', 'KY', '40546', '+1 859 721 9970');
 	END
 
 -- Event
@@ -361,6 +393,13 @@ INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId]) VALUES ('L', 'New
 
 	END
 
+	-- Volunteer
+BEGIN
+    USE [HalfTimeDB]
+	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Lance', 'Bass', '200 Erin Ln', 'Nashville', 'TN', '37221', '+12052278229');
+	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Laura', 'White', 'Twilio Test', 'Nashville', 'TN', '37221', '+12054057575');
+	END
+
 -- UserEventJoin
 BEGIN
     USE [HalfTimeDB]
@@ -442,4 +481,13 @@ INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,18);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,19);
 
 END
+
+-- UserVolunteerJoin
+BEGIN
+    USE [HalfTimeDB]
+INSERT INTO [dbo].[UserVolunteerJoin] ([UserId], [VolunteerId]) VALUES (1,1);
+INSERT INTO [dbo].[UserVolunteerJoin] ([UserId], [VolunteerId]) VALUES (1,2);
+
+END
+
 COMMIT TRANSACTION HALFTIMEDB_SEED
