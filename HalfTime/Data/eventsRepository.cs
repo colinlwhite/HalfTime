@@ -98,20 +98,31 @@ namespace HalfTime.Data
 
         public void SendSMS()
         {
-            // Find your Account Sid and Token at twilio.com/console
-            // DANGER! This is insecure. See http://twil.io/secure
-            const string accountSid = "ACf52182c66da8da1a8e1d6dee3ea528c7";
-            const string authToken = "982e9a5ce00cfcd6996b7aaa873d420a";
 
-            TwilioClient.Init(accountSid, authToken);
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
+                var authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
 
-            var message = MessageResource.Create(
-                body: "to succeed, you must study the endgame before everything else.",
-                from: new Twilio.Types.PhoneNumber("+16152586798"),
-                to: new Twilio.Types.PhoneNumber("+12052278229")
-            );
+                TwilioClient.Init(accountSid, authToken);
 
-            Console.WriteLine(message.Sid);
+                var currentEvent = db.QueryFirstOrDefault<Event>("Select TOP(1) E.Name, E.Date, E.City, E.State From Event E join UserEventJoin on E.Id = UserEventJoin.Id where UserEventJoin.UserId = 1 and E.Date > GETDATE() ORDER BY E.Date ASC");
+
+                var currentEventTime = currentEvent.Date.ToString("MM/dd/yyyy HH:mm");
+
+                List<string> numbersToMessage = db.Query<string>("select V.PhoneNumber from Volunteer V").ToList();
+
+                foreach (var number in numbersToMessage)
+                {
+                    var message = MessageResource.Create(
+                        body: $"Hey Band Boosters! To begin, thank you for your service so far this season. I just wanted to send a quick reminder about {currentEvent.Name} on {currentEventTime} in {currentEvent.City}, {currentEvent.State}. Please let me know if you have any questions!",
+                        from: new Twilio.Types.PhoneNumber("+16152586798"),
+                        to: new Twilio.Types.PhoneNumber(number)
+                    );
+
+                    Console.WriteLine($"Message to {number} has been {message.Status}.");
+                }
+            }
         }
     }
 }

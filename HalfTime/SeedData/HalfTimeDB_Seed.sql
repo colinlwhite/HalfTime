@@ -397,17 +397,7 @@ INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId]) VALUES ('L', 'New
 BEGIN
     USE [HalfTimeDB]
 	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Lance', 'Bass', '200 Erin Ln', 'Nashville', 'TN', '37221', '+12052278229');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Jack', 'Black', 'Twilio Test', 'Nashville', 'TN', '37221', '+1 205 227 8329');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Ryan', 'Barney', '991 Orin Junction', 'Worcester', 'MA', '01654', '+1 508 603 7117');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Bill', 'Eggle', '9 Farwell Plaza', 'San Antonio', 'TX', '78225', '+1 210 447 3597');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Kaley', 'Hogan', '741 1st Hill', 'Colorado Springs', 'CO', '80925', '+1 719 192 4776');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Ellen', 'Hughes', '3 Fremont Street', 'Charlotte', 'NC', '28205', '+1 704 682 3957');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Amanada', 'Rockefeller', '6914 Summerview Drive', 'Sioux Falls', 'SD', '57193', '+1 605 597 9320');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Megan', 'Justice', '033 Del Mar Park', 'Pittsburgh', 'PA', '15266', '+1  216 5989');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Erinn', 'Player', '83 Gateway Point', 'Washington', 'DC', '20067', '+1 202 302 7907');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Courtney', 'Hawkins', '85 Lunder Plaza', 'Chandler', 'AZ', '85246', '+1 480 345 6270');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Kelly', 'Blue', '09828 Cardinal Pass', 'Lexington', 'KY', '40524', '+1 859 347 8173');
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Terri', 'Hazelnut', '58401 Hollow Ridge Road', 'Lexington', 'KY', '40546', '+1 859 721 9970');
+	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber]) VALUES ('Laura', 'White', 'Twilio Test', 'Nashville', 'TN', '37221', '+12054057575');
 	END
 
 -- UserEventJoin
@@ -497,10 +487,6 @@ BEGIN
     USE [HalfTimeDB]
 INSERT INTO [dbo].[UserVolunteerJoin] ([UserId], [VolunteerId]) VALUES (1,1);
 INSERT INTO [dbo].[UserVolunteerJoin] ([UserId], [VolunteerId]) VALUES (1,2);
-INSERT INTO [dbo].[UserVolunteerJoin] ([UserId], [VolunteerId]) VALUES (1,3);
-INSERT INTO [dbo].[UserVolunteerJoin] ([UserId], [VolunteerId]) VALUES (1,4);
-INSERT INTO [dbo].[UserVolunteerJoin] ([UserId], [VolunteerId]) VALUES (1,5);
-
 
 END
 
