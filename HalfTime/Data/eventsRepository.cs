@@ -15,11 +15,23 @@ namespace HalfTime.Data
     {
 
         const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
+
         private readonly IConfiguration _config;
 
         public eventsRepository(IConfiguration config)
         {
             _config = config;
+        }
+
+        public Event getEvent(int id)
+        {
+            var sql = "select E.Name, E.Description, E.Type, E.Date, E.Street, E.City, E.State, E.ZipCode from Event E where E.Id = @id";
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var singleEvent = db.QueryFirstOrDefault<Event>(sql, new { id });
+                return singleEvent;
+
+            }
         }
 
         public IEnumerable<Event> getUserEvents(int id)

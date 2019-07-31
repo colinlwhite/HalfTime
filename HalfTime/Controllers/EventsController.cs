@@ -21,6 +21,15 @@ namespace HalfTime.Controllers
         }
 
         // GET: api/Events/5
+        [HttpGet("/eventid/{id}")]
+        public ActionResult GetEventById(int id)
+        {
+            var oneEvent = _eventsRepository.getEvent(id);
+
+            return Ok(oneEvent);
+        }
+
+        // GET: api/Events/5
         [HttpGet("{id}")]
         public ActionResult GetEventsByUserId(int id)
         {
