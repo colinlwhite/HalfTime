@@ -60,7 +60,7 @@ namespace HalfTime.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpPut("delete/{id}")]
         public ActionResult DeleteStudent(int id)
         {
             _studentsRepository.DeleteStudent(id);

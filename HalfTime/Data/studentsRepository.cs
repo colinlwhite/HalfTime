@@ -26,7 +26,7 @@ namespace HalfTime.Data
 
         public IEnumerable<Student> getUserStudents(int id)
         {
-            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student join UserStudentJoin on Student.Id = UserStudentJoin.StudentId join [User] u on UserStudentJoin.UserId = u.Id where u.Id = @id";
+            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student join UserStudentJoin on Student.Id = UserStudentJoin.StudentId join [User] u on UserStudentJoin.UserId = u.Id where u.Id = @id and Student.IsDeleted = 0";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var students = db.Query<Student>(sql, new { id }).ToList();
@@ -91,7 +91,7 @@ namespace HalfTime.Data
             {
                 var parameter = new { Id = id };
 
-                var deleteQuery = "Delete from Student where Id = @id";
+                var deleteQuery = "Update Student SET isDeleted = 1 where Student.Id = @id";
 
                 var rowsAffected = db.Execute(deleteQuery, parameter);
 
