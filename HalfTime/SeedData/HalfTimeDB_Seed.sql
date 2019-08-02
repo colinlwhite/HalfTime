@@ -104,7 +104,7 @@ CREATE TABLE [Instrument] (
     [Name] nvarchar(255)  NOT NULL ,
     [Condition] nvarchar(255)  NOT NULL ,
     [Category] nvarchar(255)  NOT NULL ,
-    [StudentId] int  NOT NULL ,
+    [StudentId] int  NULL ,
     [DatePurchased] datetime  NULL ,
     [YearPurchased] int  NULL ,
     [Description] nvarchar(255)  NOT NULL ,
@@ -122,7 +122,7 @@ CREATE TABLE [Uniform] (
     [Id] int IDENTITY(1,1) NOT NULL ,
     [Size] nvarchar(255)  NOT NULL ,
     [Condition] nvarchar(255)  NOT NULL ,
-    [StudentId] int  NOT NULL ,
+    [StudentId] int  NULL ,
     [DatePurchased] datetime  NULL ,
     [YearPurchased] int  NULL ,
     CONSTRAINT [PK_Uniform] PRIMARY KEY CLUSTERED (
