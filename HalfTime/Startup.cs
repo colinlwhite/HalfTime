@@ -46,6 +46,11 @@ namespace HalfTime
                 app.UseHsts();
             }
 
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials();
+            });
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }
