@@ -44,6 +44,8 @@ namespace HalfTime.Controllers
         {
              var newStudent = _studentsRepository.AddStudent(createStudent);
 
+            _studentsRepository.InsertStudentJoinTable();
+
             return Created($"api/students/{newStudent.Id}", newStudent);
         }
 

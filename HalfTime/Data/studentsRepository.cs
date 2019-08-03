@@ -62,6 +62,19 @@ namespace HalfTime.Data
             throw new Exception("Unfortunatley, a new student was not created");
         }
 
+        // newStudent = db.QueryFirstOrDefault<Student>(newStudent renamed, new object parameters);
+
+        public void InsertStudentJoinTable()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var studentInsert = "INSERT INTO UserStudentJoin values ((SELECT U.Id FROM [User] U WHERE U.Id = 1),(Select TOP(1) Student.Id FROM Student ORDER BY Student.Id DESC))";
+
+                var rowAffected = db.Execute(studentInsert);
+            }
+
+        }
+
         public Student updateStudent(Student studentToUpdate)
         {
             using (var db = new SqlConnection(ConnectionString))
