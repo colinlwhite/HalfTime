@@ -78,7 +78,7 @@ CREATE TABLE [Student] (
     [Gender] nvarchar(255)  NULL ,
     [Size] nvarchar(255)  NULL ,
     [Grade] nvarchar(255)  NULL ,
-	[IsDeleted] BIT NOT NULL ,
+	[IsDeleted] BIT NULL ,
     CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED (
         [Id] ASC
     )
