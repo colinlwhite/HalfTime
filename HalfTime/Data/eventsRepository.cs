@@ -15,6 +15,7 @@ namespace HalfTime.Data
     {
 
         const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
+
         private readonly IConfiguration _config;
 
         public eventsRepository(IConfiguration config)
@@ -22,9 +23,20 @@ namespace HalfTime.Data
             _config = config;
         }
 
+        public Event getEvent(int id)
+        {
+            var sql = "select E.Id, E.Name, E.Description, E.Type, E.Date, E.Street, E.City, E.State, E.ZipCode from Event E where E.Id = @id";
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var singleEvent = db.QueryFirstOrDefault<Event>(sql, new { id });
+                return singleEvent;
+
+            }
+        }
+
         public IEnumerable<Event> getUserEvents(int id)
         {
-            var sql = "select Event.Name, Event.Description, Event.Type, Event.Date, Event.Street, Event.City, Event.State, Event.ZipCode from Event join UserEventJoin on Event.Id = UserEventJoin.EventId join [User] u on UserEventJoin.UserId = u.Id where u.Id = @id";
+            var sql = "select Event.Id, Event.Name, Event.Description, Event.Type, Event.Date, Event.Street, Event.City, Event.State, Event.ZipCode from Event join UserEventJoin on Event.Id = UserEventJoin.EventId join [User] u on UserEventJoin.UserId = u.Id where u.Id = @id";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var events = db.Query<Event>(sql, new { id }).ToList();
@@ -108,8 +120,8 @@ namespace HalfTime.Data
 
             using (var db = new SqlConnection(ConnectionString))
             {
-                var accountSid = _config.GetValue<string>("TWILIO_ACCOUNT_SID");
-                var authToken = _config.GetValue<string>("TWILIO_AUTH_TOKEN");
+                var accountSid = _config.GetSection("TWILIO_ACCOUNT_SID").Value.Replace("\"","");
+                var authToken = _config.GetSection("TWILIO_AUTH_TOKEN").Value.Replace("\"", "");
 
                 TwilioClient.Init(accountSid, authToken);
 

@@ -78,6 +78,7 @@ CREATE TABLE [Student] (
     [Gender] nvarchar(255)  NULL ,
     [Size] nvarchar(255)  NULL ,
     [Grade] nvarchar(255)  NULL ,
+	[IsDeleted] BIT NULL ,
     CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED (
         [Id] ASC
     )
@@ -104,7 +105,7 @@ CREATE TABLE [Instrument] (
     [Name] nvarchar(255)  NOT NULL ,
     [Condition] nvarchar(255)  NOT NULL ,
     [Category] nvarchar(255)  NOT NULL ,
-    [StudentId] int  NOT NULL ,
+    [StudentId] int  NULL ,
     [DatePurchased] datetime  NULL ,
     [YearPurchased] int  NULL ,
     [Description] nvarchar(255)  NOT NULL ,
@@ -122,7 +123,7 @@ CREATE TABLE [Uniform] (
     [Id] int IDENTITY(1,1) NOT NULL ,
     [Size] nvarchar(255)  NOT NULL ,
     [Condition] nvarchar(255)  NOT NULL ,
-    [StudentId] int  NOT NULL ,
+    [StudentId] int  NULL ,
     [DatePurchased] datetime  NULL ,
     [YearPurchased] int  NULL ,
     CONSTRAINT [PK_Uniform] PRIMARY KEY CLUSTERED (
@@ -297,38 +298,38 @@ INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Stree
 -- Student
 BEGIN
     USE [HalfTimeDB]
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Lorna', 'Mindenhall', '85 American Ash Trail', 'Saint Louis', 'MO', '63126', '+1 314 217 5982', 'Female', 'M', 'in');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Ellynn', 'Neillans', '60241 4th Trail', 'San Antonio', 'TX', '78265', '+1 210 729 1897', 'Female', 'XL', 'purus');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Joellyn', 'Capon', '577 Moulton Hill', 'Richmond', 'VA', '23277', '+1 804 250 2442', 'Female', 'XS', 'pede');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Garner', 'Leyshon', '781 Linden Junction', 'Boise', 'ID', '83757', '+1 208 407 5275', 'Male', 'XL', 'tellus');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Filberte', 'Saffe', '6 Ronald Regan Parkway', 'Littleton', 'CO', '80126', '+1 303 826 8855', 'Male', 'XL', 'vitae');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Mariana', 'Rooze', '99 Schurz Alley', 'Honolulu', 'HI', '96845', '+1 808 636 2260', 'Female', 'XL', 'donec');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Bald', 'Antoni', '7641 Sullivan Center', 'Dallas', 'TX', '75323', '+1 214 365 9091', 'Male', 'L', 'sem');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Penelopa', 'Rossoni', '38491 Mallory Circle', 'Reno', 'NV', '89550', '+1 775 934 5165', 'Female', '2XL', 'ac');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Jilleen', 'Huntley', '68 Mayer Road', 'Washington', 'DC', '20530', '+1 202 560 4034', 'Female', 'XL', 'faucibus');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Howey', 'Swalteridge', '3 Quincy Plaza', 'Jackson', 'MS', '39204', '+1 601 258 4218', 'Male', 'M', 'aliquet');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Wilmette', 'Geerling', '619 Fulton Point', 'Fairbanks', 'AK', '99709', '+1 907 361 7824', 'Female', '2XL', 'vel');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Taffy', 'Croney', '174 Ridge Oak Parkway', 'Tulsa', 'OK', '74141', '+1 918 280 4147', 'Female', '2XL', 'turpis');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Erin', 'Elce', '738 Fairfield Center', 'Cleveland', 'OH', '44111', '+1 216 406 1628', 'Female', 'XS', 'amet');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Farrell', 'Sowood', '473 Kedzie Hill', 'Madison', 'WI', '53785', '+1 608 210 8645', 'Male', 'XL', 'condimentum');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Gussi', 'Rielly', '1154 Steensland Crossing', 'Billings', 'MT', '59105', '+1 406 382 2532', 'Female', 'S', 'elementum');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Klarika', 'Fricker', '61 Onsgard Pass', 'Madison', 'WI', '53705', '+1 608 716 0311', 'Female', '3XL', 'amet');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Rhianna', 'Blasetti', '18 Colorado Way', 'Brooklyn', 'NY', '11215', '+1 646 290 2774', 'Female', 'S', 'ullamcorper');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Nikki', 'Blasius', '5 Clemons Plaza', 'Youngstown', 'OH', '44555', '+1 330 259 8030', 'Female', 'M', 'velit');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Farra', 'Anyene', '4 Northport Center', 'Atlanta', 'GA', '30306', '+1 678 394 0065', 'Female', 'XS', 'vitae');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Glenden', 'Wanka', '65 Oxford Place', 'Des Moines', 'IA', '50305', '+1 515 153 3130', 'Male', 'L', 'nec');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Glen', 'Caruba', '65 Oxford Place', 'Des Moines', 'IA', '50305', '+1 205 153 3130', 'Female', 'XL', 'senior');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Peter', 'Wolf', 'Holly Hill', 'Huntsville', 'AL', '77305', '+1 256 153 6540', 'Male', 'S', 'freshman');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Colin', 'Wanka', '1245 Cindy Dr', 'Des Moines', 'IA', '50305', '+1 515 153 3130', 'Male', 'M', 'senior');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Russ', 'Saunders', '6565 Lane', 'Pell City', 'AL', '50305', '+1 515 153 3130', 'Female', 'L', 'freshman');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Brian', 'Wolf', '65 Oxford Place', 'Des Moines', 'IA', '50305', '+1 515 153 3730', 'Male', 'XXL', 'nec');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Ben', 'Wanka', '4013 Park Place', 'Des Moines', 'IA', '50305', '+1 515 153 3130', 'Male', 'L', 'nec');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Laura', 'Wanka', '65 Oxford Place', 'Des Moines', 'IA', '57605', '+1 515 153 3138', 'Male', 'S', 'nec');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Kim', 'Cervantez', '65 Oxford Place', 'Des Moines', 'IA', '50305', '+1 707 153 3130', 'Male', 'L', 'junior');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Lisa', 'Wanka', '65 Oxford Place', 'Birmingham', 'AL', '50305', '+1 515 153 3530', 'Male', 'S', 'nec');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Ron', 'Read', '65 Oxford Place', 'Nashville', 'IA', '07305', '+1 515 153 3130', 'Male', 'M', 'nec');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Ray', 'Gonzales', '65 Oxford Place', 'Atlanta', 'GA', '50305', '+1 515 153 3540', 'Female', 'L', 'nec');
-INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade]) VALUES ('Chris', 'Flatt', '65 Oxford Place', 'Cheatem', 'TN', '50305', '+1 515 153 3130', 'Male', 'L', 'junior');
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Lorna', 'Mindenhall', '85 American Ash Trail', 'Saint Louis', 'MO', '63126', '+1 314 217 5982', 'Female', 'M', 'in', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Ellynn', 'Neillans', '60241 4th Trail', 'San Antonio', 'TX', '78265', '+1 210 729 1897', 'Female', 'XL', 'purus', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Joellyn', 'Capon', '577 Moulton Hill', 'Richmond', 'VA', '23277', '+1 804 250 2442', 'Female', 'XS', 'pede', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Garner', 'Leyshon', '781 Linden Junction', 'Boise', 'ID', '83757', '+1 208 407 5275', 'Male', 'XL', 'tellus', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Filberte', 'Saffe', '6 Ronald Regan Parkway', 'Littleton', 'CO', '80126', '+1 303 826 8855', 'Male', 'XL', 'vitae', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Mariana', 'Rooze', '99 Schurz Alley', 'Honolulu', 'HI', '96845', '+1 808 636 2260', 'Female', 'XL', 'donec', 1);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Bald', 'Antoni', '7641 Sullivan Center', 'Dallas', 'TX', '75323', '+1 214 365 9091', 'Male', 'L', 'sem', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Penelopa', 'Rossoni', '38491 Mallory Circle', 'Reno', 'NV', '89550', '+1 775 934 5165', 'Female', '2XL', 'ac', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Jilleen', 'Huntley', '68 Mayer Road', 'Washington', 'DC', '20530', '+1 202 560 4034', 'Female', 'XL', 'faucibus', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Howey', 'Swalteridge', '3 Quincy Plaza', 'Jackson', 'MS', '39204', '+1 601 258 4218', 'Male', 'M', 'aliquet', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Wilmette', 'Geerling', '619 Fulton Point', 'Fairbanks', 'AK', '99709', '+1 907 361 7824', 'Female', '2XL', 'vel', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Taffy', 'Croney', '174 Ridge Oak Parkway', 'Tulsa', 'OK', '74141', '+1 918 280 4147', 'Female', '2XL', 'turpis', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Erin', 'Elce', '738 Fairfield Center', 'Cleveland', 'OH', '44111', '+1 216 406 1628', 'Female', 'XS', 'amet', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Farrell', 'Sowood', '473 Kedzie Hill', 'Madison', 'WI', '53785', '+1 608 210 8645', 'Male', 'XL', 'condimentum', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Gussi', 'Rielly', '1154 Steensland Crossing', 'Billings', 'MT', '59105', '+1 406 382 2532', 'Female', 'S', 'elementum', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Klarika', 'Fricker', '61 Onsgard Pass', 'Madison', 'WI', '53705', '+1 608 716 0311', 'Female', '3XL', 'amet', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Rhianna', 'Blasetti', '18 Colorado Way', 'Brooklyn', 'NY', '11215', '+1 646 290 2774', 'Female', 'S', 'ullamcorper', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Nikki', 'Blasius', '5 Clemons Plaza', 'Youngstown', 'OH', '44555', '+1 330 259 8030', 'Female', 'M', 'velit', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Farra', 'Anyene', '4 Northport Center', 'Atlanta', 'GA', '30306', '+1 678 394 0065', 'Female', 'XS', 'vitae', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Glenden', 'Wanka', '65 Oxford Place', 'Des Moines', 'IA', '50305', '+1 515 153 3130', 'Male', 'L', 'nec', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Glen', 'Caruba', '65 Oxford Place', 'Des Moines', 'IA', '50305', '+1 205 153 3130', 'Female', 'XL', 'senior', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Peter', 'Wolf', 'Holly Hill', 'Huntsville', 'AL', '77305', '+1 256 153 6540', 'Male', 'S', 'freshman', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Colin', 'Wanka', '1245 Cindy Dr', 'Des Moines', 'IA', '50305', '+1 515 153 3130', 'Male', 'M', 'senior', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Russ', 'Saunders', '6565 Lane', 'Pell City', 'AL', '50305', '+1 515 153 3130', 'Female', 'L', 'freshman', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Brian', 'Wolf', '65 Oxford Place', 'Des Moines', 'IA', '50305', '+1 515 153 3730', 'Male', 'XXL', 'nec', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Ben', 'Wanka', '4013 Park Place', 'Des Moines', 'IA', '50305', '+1 515 153 3130', 'Male', 'L', 'nec', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Laura', 'Wanka', '65 Oxford Place', 'Des Moines', 'IA', '57605', '+1 515 153 3138', 'Male', 'S', 'nec', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Kim', 'Cervantez', '65 Oxford Place', 'Des Moines', 'IA', '50305', '+1 707 153 3130', 'Male', 'L', 'junior', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Lisa', 'Wanka', '65 Oxford Place', 'Birmingham', 'AL', '50305', '+1 515 153 3530', 'Male', 'S', 'nec', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Ron', 'Read', '65 Oxford Place', 'Nashville', 'IA', '07305', '+1 515 153 3130', 'Male', 'M', 'nec', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Ray', 'Gonzales', '65 Oxford Place', 'Atlanta', 'GA', '50305', '+1 515 153 3540', 'Female', 'L', 'nec', 0);
+INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State], [ZipCode], [PhoneNumber], [Gender], [Size], [Grade], [IsDeleted]) VALUES ('Chris', 'Flatt', '65 Oxford Place', 'Cheatem', 'TN', '50305', '+1 515 153 3130', 'Male', 'L', 'junior', 0);
 	END
 
 -- Instrument

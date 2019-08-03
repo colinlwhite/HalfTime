@@ -13,6 +13,17 @@ namespace HalfTime.Data
 
         const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
 
+        public Instrument getInstrument(int id)
+        {
+            var sql = "select Instrument.Id, Instrument.Name, Instrument.Condition, Instrument.Category, Instrument.StudentId, Instrument.Description, Instrument.Brand, Instrument.ModelNumber from Instrument where Instrument.Id = @id";
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var singleInstrument = db.QueryFirstOrDefault<Instrument>(sql, new { id });
+                return singleInstrument;
+
+            }
+        }
+
         public IEnumerable <Instrument> getUserInstruments(int id)
         {
             var sql = "select Instrument.Id, Instrument.Name, Instrument.Condition, Instrument.Category, Instrument.StudentId, Instrument.Description, Instrument.Brand, Instrument.ModelNumber from Instrument join UserInstrumentJoin on Instrument.Id = UserInstrumentJoin.InstrumentId join [User] u on UserInstrumentJoin.UserId = u.Id where u.Id = @id";

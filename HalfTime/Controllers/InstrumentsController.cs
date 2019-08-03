@@ -21,6 +21,15 @@ namespace HalfTime.Controllers
             _instrumentsRepository = new instrumentsRepository();
         }
 
+        // GET: api/Instruments/ID/5
+        [HttpGet("ID/{id}")]
+        public ActionResult GetInstrumentById(int id)
+        {
+            var oneInstrument = _instrumentsRepository.getInstrument(id);
+
+            return Ok(oneInstrument);
+        }
+
         // GET: api/Instruments/5
         [HttpGet("{id}")]
         public ActionResult GetInstrumentsByUserId(int id)

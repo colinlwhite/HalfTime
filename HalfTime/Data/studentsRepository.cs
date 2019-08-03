@@ -13,9 +13,20 @@ namespace HalfTime.Data
 
         const string ConnectionString = "Server=localhost;Database=HalfTimeDB;Trusted_Connection=True;";
 
+        public Student getStudent(int id)
+        {
+            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student where Student.Id = @id";
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var singleStudent = db.QueryFirstOrDefault<Student>(sql, new { id });
+                return singleStudent;
+
+            }
+        }
+
         public IEnumerable<Student> getUserStudents(int id)
         {
-            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student join UserStudentJoin on Student.Id = UserStudentJoin.StudentId join [User] u on UserStudentJoin.UserId = u.Id where u.Id = @id";
+            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student join UserStudentJoin on Student.Id = UserStudentJoin.StudentId join [User] u on UserStudentJoin.UserId = u.Id where u.Id = 1 and Student.IsDeleted = 0 OR Student.IsDeleted IS NULL";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var students = db.Query<Student>(sql, new { id }).ToList();
@@ -51,6 +62,19 @@ namespace HalfTime.Data
             throw new Exception("Unfortunatley, a new student was not created");
         }
 
+        // newStudent = db.QueryFirstOrDefault<Student>(newStudent renamed, new object parameters);
+
+        public void InsertStudentJoinTable()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var studentInsert = "INSERT INTO UserStudentJoin values ((SELECT U.Id FROM [User] U WHERE U.Id = 1),(Select TOP(1) Student.Id FROM Student ORDER BY Student.Id DESC))";
+
+                var rowAffected = db.Execute(studentInsert);
+            }
+
+        }
+
         public Student updateStudent(Student studentToUpdate)
         {
             using (var db = new SqlConnection(ConnectionString))
@@ -80,7 +104,7 @@ namespace HalfTime.Data
             {
                 var parameter = new { Id = id };
 
-                var deleteQuery = "Delete from Student where Id = @id";
+                var deleteQuery = "Update Student SET isDeleted = 1 where Student.Id = @id";
 
                 var rowsAffected = db.Execute(deleteQuery, parameter);
 

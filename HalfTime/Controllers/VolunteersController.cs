@@ -20,6 +20,15 @@ namespace HalfTime.Controllers
             _volunteersRepository = new volunteersRepository();
         }
 
+        // GET: api/Volunteers/ID/2
+        [HttpGet("ID/{id}")]
+        public ActionResult GetEventById(int id)
+        {
+            var oneVolunteer = _volunteersRepository.getVolunteer(id);
+
+            return Ok(oneVolunteer);
+        }
+
         // GET: api/Volunteers/5
         [HttpGet("{id}")]
         public ActionResult GetVolunteersByUserId(int id)

@@ -20,6 +20,15 @@ namespace HalfTime.Controllers
             _studentsRepository = new studentsRepository();
         }
 
+        // GET: api/Students/ID/2
+        [HttpGet("ID/{id}")]
+        public ActionResult GetStudentById(int id)
+        {
+            var oneStudent = _studentsRepository.getStudent(id);
+
+            return Ok(oneStudent);
+        }
+
         // GET: api/Students/5
         [HttpGet("{id}")]
         public ActionResult GetStudentsByUserId(int id)
@@ -34,6 +43,8 @@ namespace HalfTime.Controllers
         public ActionResult AddStudent(Student createStudent)
         {
              var newStudent = _studentsRepository.AddStudent(createStudent);
+
+            _studentsRepository.InsertStudentJoinTable();
 
             return Created($"api/students/{newStudent.Id}", newStudent);
         }
@@ -51,7 +62,7 @@ namespace HalfTime.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpPut("delete/{id}")]
         public ActionResult DeleteStudent(int id)
         {
             _studentsRepository.DeleteStudent(id);
