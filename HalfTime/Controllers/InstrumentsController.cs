@@ -45,6 +45,8 @@ namespace HalfTime.Controllers
         {
             var newInstrument = _instrumentsRepository.AddInstrument(createInstrument);
 
+            _instrumentsRepository.InsertInstrumentJoinTable();
+
             return Created($"api/instruments/{newInstrument.Id}", newInstrument);
         }
 
@@ -61,7 +63,7 @@ namespace HalfTime.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpPut("delete/{id}")]
         public ActionResult DeleteInstrument(int id)
         {
             _instrumentsRepository.DeleteInstrument(id);

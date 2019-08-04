@@ -26,7 +26,7 @@ namespace HalfTime.Data
 
         public IEnumerable <Instrument> getUserInstruments(int id)
         {
-            var sql = "select Instrument.Id, Instrument.Name, Instrument.Condition, Instrument.Category, Instrument.StudentId, Instrument.Description, Instrument.Brand, Instrument.ModelNumber from Instrument join UserInstrumentJoin on Instrument.Id = UserInstrumentJoin.InstrumentId join [User] u on UserInstrumentJoin.UserId = u.Id where u.Id = @id";
+            var sql = "select Instrument.Id, Instrument.Name, Instrument.Condition, Instrument.Category, Instrument.StudentId, Instrument.Description, Instrument.Brand, Instrument.ModelNumber from Instrument join UserInstrumentJoin on Instrument.Id = UserInstrumentJoin.InstrumentId join [User] u on UserInstrumentJoin.UserId = u.Id where u.Id = @id and Instrument.IsDeleted = 0 OR Instrument.IsDeleted IS NULL";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var instruments = db.Query<Instrument>(sql, new { id }).ToList();
@@ -63,6 +63,16 @@ namespace HalfTime.Data
             throw new Exception("Unfortunatley, a new instrument was not created");
         }
 
+        public void InsertInstrumentJoinTable()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var instrumentInsert = "INSERT INTO UserInstrumentJoin values ((SELECT U.Id FROM [User] U WHERE U.Id = 1),(Select TOP(1) Instrument.Id FROM Instrument ORDER BY Instrument.Id DESC))";
+
+                var rowAffected = db.Execute(instrumentInsert);
+            }
+        }
+
         public Instrument updateInstrument(Instrument instrumentToUpdate)
         {
             using (var db = new SqlConnection(ConnectionString))
@@ -93,7 +103,7 @@ namespace HalfTime.Data
             {
                 var parameter = new { Id = id };
 
-                var deleteQuery = "Delete from Instrument where Id = @id";
+                var deleteQuery = "Update Instrument SET isDeleted = 1 where Instrument.Id = @id";
 
                 var rowsAffected = db.Execute(deleteQuery, parameter);
 
