@@ -67,7 +67,7 @@ namespace HalfTime.Data
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var instrumentInsert = "INSERT INTO UserInstrumentJoin values ((SELECT U.Id FROM [User] U WHERE U.Id = 1),(Select TOP(1) Instrument.Id FROM Student ORDER BY Instrument.Id DESC))";
+                var instrumentInsert = "INSERT INTO UserInstrumentJoin values ((SELECT U.Id FROM [User] U WHERE U.Id = 1),(Select TOP(1) Instrument.Id FROM Instrument ORDER BY Instrument.Id DESC))";
 
                 var rowAffected = db.Execute(instrumentInsert);
             }
