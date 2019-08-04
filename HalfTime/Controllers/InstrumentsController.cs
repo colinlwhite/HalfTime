@@ -45,6 +45,8 @@ namespace HalfTime.Controllers
         {
             var newInstrument = _instrumentsRepository.AddInstrument(createInstrument);
 
+            _instrumentsRepository.InsertInstrumentJoinTable();
+
             return Created($"api/instruments/{newInstrument.Id}", newInstrument);
         }
 

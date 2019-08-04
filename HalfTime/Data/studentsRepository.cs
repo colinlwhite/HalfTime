@@ -26,7 +26,7 @@ namespace HalfTime.Data
 
         public IEnumerable<Student> getUserStudents(int id)
         {
-            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student join UserStudentJoin on Student.Id = UserStudentJoin.StudentId join [User] u on UserStudentJoin.UserId = u.Id where u.Id = 1 and Student.IsDeleted = 0 OR Student.IsDeleted IS NULL";
+            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student join UserStudentJoin on Student.Id = UserStudentJoin.StudentId join [User] u on UserStudentJoin.UserId = u.Id where u.Id = @id and Student.IsDeleted = 0 OR Student.IsDeleted IS NULL";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var students = db.Query<Student>(sql, new { id }).ToList();
@@ -61,8 +61,6 @@ namespace HalfTime.Data
 
             throw new Exception("Unfortunatley, a new student was not created");
         }
-
-        // newStudent = db.QueryFirstOrDefault<Student>(newStudent renamed, new object parameters);
 
         public void InsertStudentJoinTable()
         {
