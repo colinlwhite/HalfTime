@@ -36,7 +36,7 @@ namespace HalfTime.Data
 
         public IEnumerable<Event> getUserEvents(int id)
         {
-            var sql = "select Event.Id, Event.Name, Event.Description, Event.Type, Event.Date, Event.Street, Event.City, Event.State, Event.ZipCode from Event join UserEventJoin on Event.Id = UserEventJoin.EventId join [User] u on UserEventJoin.UserId = u.Id where u.Id = @id";
+            var sql = "select Event.Id, Event.Name, Event.Description, Event.Type, Event.Date, Event.Street, Event.City, Event.State, Event.ZipCode from Event join UserEventJoin on Event.Id = UserEventJoin.EventId join [User] u on UserEventJoin.UserId = u.Id where u.Id = @id and Event.IsDeleted = 0 OR Event.IsDeleted IS NULL";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var events = db.Query<Event>(sql, new { id }).ToList();
@@ -74,6 +74,17 @@ namespace HalfTime.Data
             throw new Exception("Unfortunatley, a new event was not created");
         }
 
+        public void InsertEventJoinTable()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var eventInsert = "INSERT INTO UserEventJoin values ((SELECT U.Id FROM [User] U WHERE U.Id = 1),(Select TOP(1) Event.Id FROM Event ORDER BY Event.Id DESC))";
+
+                var rowAffected = db.Execute(eventInsert);
+            }
+        }
+       
+
         public Event updateEvent(Event eventToUpdate)
         {
             using (var db = new SqlConnection(ConnectionString))
@@ -104,7 +115,7 @@ namespace HalfTime.Data
             {
                 var parameter = new { Id = id };
 
-                var deleteQuery = "Delete from Event where Id = @id";
+                var deleteQuery = "Update Event SET isDeleted = 1 where Event.Id = @id";
 
                 var rowsAffected = db.Execute(deleteQuery, parameter);
 
