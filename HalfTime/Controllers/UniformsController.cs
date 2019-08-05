@@ -44,6 +44,8 @@ namespace HalfTime.Controllers
         {
             var newUniform = _uniformsRepository.AddUniform(createUniform);
 
+            _uniformsRepository.InsertUniformJoinTable();
+
             return Created($"api/uniforms/{newUniform.Id}", newUniform);
         }
 
@@ -60,7 +62,7 @@ namespace HalfTime.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpPut("delete/{id}")]
         public ActionResult DeleteUniform(int id)
         {
             _uniformsRepository.DeleteUniform(id);

@@ -25,7 +25,7 @@ namespace HalfTime.Data
 
         public IEnumerable<Uniform> getUserUniforms(int id)
         {
-            var sql = "select Uniform.Id, Uniform.Size, Uniform.Condition, Uniform.StudentId from Uniform join UserUniformJoin on Uniform.Id = UserUniformJoin.UniformId join [User] u on UserUniformJoin.UserId = u.Id where u.Id = @id";
+            var sql = "select Uniform.Id, Uniform.Size, Uniform.Condition, Uniform.StudentId from Uniform join UserUniformJoin on Uniform.Id = UserUniformJoin.UniformId join [User] u on UserUniformJoin.UserId = u.Id where u.Id = @id and Uniform.IsDeleted = 0 OR Uniform.IsDeleted IS NULL";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var uniforms = db.Query<Uniform>(sql, new { id }).ToList();
@@ -58,6 +58,16 @@ namespace HalfTime.Data
             throw new Exception("Unfortunatley, a new uniform was not created");
         }
 
+        public void InsertUniformJoinTable()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var uniformInsert = "INSERT INTO UserUniformJoin values ((SELECT U.Id FROM [User] U WHERE U.Id = 1),(Select TOP(1) Uniform.Id FROM Uniform ORDER BY Uniform.Id DESC))";
+
+                var rowAffected = db.Execute(uniformInsert);
+            }
+        }
+
         public Uniform updateUniform(Uniform uniformToUpdate)
         {
             using (var db = new SqlConnection(ConnectionString))
@@ -84,7 +94,7 @@ namespace HalfTime.Data
             {
                 var parameter = new { Id = id };
 
-                var deleteQuery = "Delete from Uniform where Id = @id";
+                var deleteQuery = "Update Uniform SET isDeleted = 1 where Uniform.Id = @id";
 
                 var rowsAffected = db.Execute(deleteQuery, parameter);
 
