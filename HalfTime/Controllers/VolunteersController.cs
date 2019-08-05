@@ -44,6 +44,8 @@ namespace HalfTime.Controllers
         {
             var newVolunteer = _volunteersRepository.AddVolunteer(createVolunteer);
 
+            _volunteersRepository.InsertVolunteerJoinTable();
+
             return Created($"api/volunteers/{newVolunteer.Id}", newVolunteer);
         }
 
@@ -60,7 +62,7 @@ namespace HalfTime.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpPut("delete/{id}")]
         public ActionResult DeleteVolunteer(int id)
         {
             _volunteersRepository.DeleteVolunteer(id);
