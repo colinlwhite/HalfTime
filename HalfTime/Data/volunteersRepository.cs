@@ -26,7 +26,7 @@ namespace HalfTime.Data
 
         public IEnumerable<Volunteer> getUserVolunteers(int id)
         {
-            var sql = "select Volunteer.Id, Volunteer.FirstName, Volunteer.LastName, Volunteer.Street, Volunteer.City, Volunteer.State, Volunteer.ZipCode, Volunteer.PhoneNumber from Volunteer join UserVolunteerJoin on Volunteer.Id = UserVolunteerJoin.VolunteerId join [User] u on UserVolunteerJoin.UserId = u.Id where u.Id = @id";
+            var sql = "select Volunteer.Id, Volunteer.FirstName, Volunteer.LastName, Volunteer.Street, Volunteer.City, Volunteer.State, Volunteer.ZipCode, Volunteer.PhoneNumber from Volunteer join UserVolunteerJoin on Volunteer.Id = UserVolunteerJoin.VolunteerId join [User] u on UserVolunteerJoin.UserId = u.Id where u.Id = @id and Volunteer.IsDeleted = 0 OR Volunteer.IsDeleted IS NULL";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var volunteers = db.Query<Volunteer>(sql, new { id }).ToList();
@@ -63,6 +63,16 @@ namespace HalfTime.Data
             throw new Exception("Unfortunatley, a new volunteer was not created");
         }
 
+        public void InsertVolunteerJoinTable()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var volunteerInsert = "INSERT INTO UserVolunteerJoin values ((SELECT U.Id FROM [User] U WHERE U.Id = 1),(Select TOP(1) Volunteer.Id FROM Volunteer ORDER BY Volunteer.Id DESC))";
+
+                var rowAffected = db.Execute(volunteerInsert);
+            }
+        }
+
         public Volunteer updateVolunteer(Volunteer volunteerToUpdate)
         {
             using (var db = new SqlConnection(ConnectionString))
@@ -93,7 +103,7 @@ namespace HalfTime.Data
             {
                 var parameter = new { Id = id };
 
-                var deleteQuery = "Delete from Volunteer where Id = @id";
+                var deleteQuery = "Update Volunteer SET isDeleted = 1 where Volunteer.Id = @id";
 
                 var rowsAffected = db.Execute(deleteQuery, parameter);
 
