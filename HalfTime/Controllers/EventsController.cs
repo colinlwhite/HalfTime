@@ -44,6 +44,8 @@ namespace HalfTime.Controllers
         {
             var newEvent = _eventsRepository.AddEvent(createEvent);
 
+            _eventsRepository.InsertEventJoinTable();
+
             return Created($"api/events/{newEvent.Id}", newEvent);
         }
 
@@ -69,7 +71,7 @@ namespace HalfTime.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpPut("delete/{id}")]
         public ActionResult DeleteEvent(int id)
         {
             _eventsRepository.DeleteEvent(id);
