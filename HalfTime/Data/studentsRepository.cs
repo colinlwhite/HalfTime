@@ -15,7 +15,7 @@ namespace HalfTime.Data
 
         public Student getStudent(int id)
         {
-            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student where Student.Id = @id";
+            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode, Student.Gender, Student.Grade, Student.Chair from Student where Student.Id = @id";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var singleStudent = db.QueryFirstOrDefault<Student>(sql, new { id });
@@ -26,7 +26,7 @@ namespace HalfTime.Data
 
         public IEnumerable<Student> getUserStudents(int id)
         {
-            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode from Student join UserStudentJoin on Student.Id = UserStudentJoin.StudentId join [User] u on UserStudentJoin.UserId = u.Id where u.Id = @id and Student.IsDeleted = 0 OR Student.IsDeleted IS NULL";
+            var sql = "select Student.Id, Student.FirstName, Student.LastName, Student.Street, Student.City, Student.State, Student.ZipCode, Student.Gender, Student.Grade, Student.Chair from Student join UserStudentJoin on Student.Id = UserStudentJoin.StudentId join [User] u on UserStudentJoin.UserId = u.Id where u.Id = @id and Student.IsDeleted = 0 OR Student.IsDeleted IS NULL";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var students = db.Query<Student>(sql, new { id }).ToList();
@@ -40,9 +40,9 @@ namespace HalfTime.Data
             using (var db = new SqlConnection(ConnectionString))
             {
                 var newStudent = db.QueryFirstOrDefault<Student>(@"
-                    Insert into student(firstname, lastname, street, city, state, zipcode)
+                    Insert into student(firstname, lastname, street, city, state, zipcode, gender, grade, chair)
                     Output inserted.*
-                    Values(@firstname, @lastname, @street, @city, @state, @zipcode)",
+                    Values(@firstname, @lastname, @street, @city, @state, @zipcode, @gender, @grade, @chair)",
                     new
                     {
                         newStudentObj.FirstName,
@@ -51,6 +51,9 @@ namespace HalfTime.Data
                         newStudentObj.City,
                         newStudentObj.State,
                         newStudentObj.ZipCode,
+                        newStudentObj.Gender,
+                        newStudentObj.Grade,
+                        newStudentObj.Chair,
                     });
 
                 if (newStudent != null)
@@ -83,7 +86,10 @@ namespace HalfTime.Data
                                     Street = @street,
                                     City = @city,
                                     State = @state,
-                                    ZipCode = @zipcode
+                                    ZipCode = @zipcode,
+                                    Gender = @gender, 
+                                    Grade = @grade, 
+                                    Chair = @chair
                                     Where Id = @id";
 
                 var rowsAffected = db.Execute(updateQuery, studentToUpdate);
