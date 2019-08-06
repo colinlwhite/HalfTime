@@ -36,7 +36,7 @@ namespace HalfTime.Data
 
         public IEnumerable<Event> getUserEvents(int id)
         {
-            var sql = "select Event.Id, Event.Name, Event.Description, Event.Type, Event.Date, Event.Street, Event.City, Event.State, Event.ZipCode from Event join UserEventJoin on Event.Id = UserEventJoin.EventId join [User] u on UserEventJoin.UserId = u.Id where u.Id = @id and Event.IsDeleted = 0 OR Event.IsDeleted IS NULL";
+            var sql = "select Event.Id, Event.Name, Event.Description, Event.Type, Event.Date, Event.Street, Event.City, Event.State, Event.ZipCode from Event join UserEventJoin on Event.Id = UserEventJoin.EventId join [User] u on UserEventJoin.UserId = u.Id where u.Id = @id and Event.IsDeleted = 0 OR Event.IsDeleted IS NULL ORDER BY Event.Date ASC";
             using (var db = new SqlConnection(ConnectionString))
             {
                 var events = db.Query<Event>(sql, new { id }).ToList();
