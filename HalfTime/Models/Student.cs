@@ -14,5 +14,9 @@ namespace HalfTime.Models
         public string City { get; set; }
         public string State { get; set; }
         public int ZipCode { get; set; }
+        public string Gender { get; set; }
+        public string Grade { get; set; }
+        public string Chair { get; set; }
+
     }
 }
