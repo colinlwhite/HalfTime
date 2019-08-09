@@ -287,16 +287,19 @@ BEGIN
 -- Event
 BEGIN
     USE [HalfTimeDB]
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('lacinia nisi venenatis', 'metus vitae ipsum', 'consectetuer', '2019-09-02 11:36:20', '6:02', '8889 Coleman Drive', 'San Diego', 'CA', '92105', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('fusce', 'ac lobortis vel', 'vestibulum', '2019-12-12 17:52:39', '11:55', '19 Jackson Place', 'Harrisburg', 'PA', '17140', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('aenean lectus', 'vestibulum quam sapien varius ut', 'sit', '2019-11-19 22:39:50', '15:25', '67693 Fairfield Point', 'Gainesville', 'FL', '32627', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('quam pede', 'viverra diam vitae quam suspendisse potenti nullam', 'mattis', '2019-09-22 21:18:25', '21:56', '594 Cody Way', 'New York City', 'NY', '10029', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('pede ullamcorper augue', 'sapien cursus vestibulum', 'praesent', '2019-12-01 12:27:00', '7:33', '418 Shelley Parkway', 'Des Moines', 'IA', '50393', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('phasellus sit amet', 'nulla ultrices aliquet maecenas leo odio condimentum', 'in', '2019-09-28 16:35:45', '7:08', '464 Sloan Drive', 'Indianapolis', 'IN', '46221', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('sed lacus morbi', 'non quam nec dui luctus rutrum nulla', 'nibh', '2019-12-05 05:16:25', '4:01', '03143 Loftsgordon Trail', 'Jacksonville', 'FL', '32209', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('accumsan tellus nisi', 'eget rutrum at', 'ante', '2019-12-04 14:41:12', '8:10', '506 Wayridge Court', 'Austin', 'TX', '78732', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('rhoncus dui vel sem sed', 'etiam pretium iaculis justo in hac habitasse', 'nulla', '2019-09-05 11:37:19', '2:44', '45809 Hoffman Park', 'Shawnee Mission', 'KS', '66210', 0);
-INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('id nulla', 'vitae quam suspendisse', 'ipsum', '2019-10-08 14:51:46', '14:27', '6 Gale Junction', 'Dayton', 'OH', '45414', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('UA vs. Duke', 'Chick-fil-a Classic', 'Sporting Event', '2019-08-31 02:30:00', '6:02', '1 AMB Dr NW', 'Atlanta', 'GA', '30313', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('Jazz Band Auditions', 'For basketball season', 'Auditions', '2019-09-04 07:30:00', '6:02', '810 2nd Ave', 'Tuscaloosa', 'AL', '35401', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('Wednesday Night Sectionals', 'Drumline excluded', 'Rehearsal', '2019-09-04 07:30:00', '6:02', '810 2nd Ave', 'Tuscaloosa', 'AL', '35401', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('Band of America', 'Exhibition performance', 'Competition', '2019-09-04 07:30:00', '6:02', '810 2nd Ave', 'Tuscaloosa', 'AL', '35401', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('New Mexico State', 'Home Opener', 'Sporting Event', '2019-09-07 03:00:00', '11:55', '920 Paul W Bryant Dr', 'Tuscaloosa', 'AL', '35401', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('@ South Carolina', 'First Away Game', 'Sporting Event', '2019-11-19 22:39:50', '15:25', '67693 Fairfield Point', 'Gainesville', 'FL', '32627', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('vs. Southern Miss', 'HS Band Day too', 'Sporting Event', '2019-09-22 21:18:25', '21:56', '594 Cody Way', 'New York City', 'NY', '10029', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('vs. Ole Miss', 'Joint National Anthem', 'Sporting Event', '2019-12-01 12:27:00', '7:33', '418 Shelley Parkway', 'Des Moines', 'IA', '50393', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('@ Texas A&M', 'Full Band Attending', 'Sporting Event', '2019-09-28 16:35:45', '7:08', '464 Sloan Drive', 'Indianapolis', 'IN', '46221', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('vs. Tennessee', 'Rivalry Game', 'Sporting Event', '2019-12-05 05:16:25', '4:01', '03143 Loftsgordon Trail', 'Jacksonville', 'FL', '32209', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('Homecoming Parade', '10 miles', 'Parade', '2019-12-04 14:41:12', '8:10', '506 Wayridge Court', 'Austin', 'TX', '78732', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('Homecoming Pep Rally', '@ The Quad and Library Steps', 'Community', '2019-09-05 11:37:19', '2:44', '45809 Hoffman Park', 'Shawnee Mission', 'KS', '66210', 0);
+INSERT INTO [dbo].[Event] ([Name], [Description], [Type], [Date], [Time], [Street], [City], [State], [ZipCode], [IsDeleted]) VALUES ('vs. Arkansas', 'Homecoming Game', 'Sporting Event', '2019-10-08 14:51:46', '14:27', '6 Gale Junction', 'Dayton', 'OH', '45414', 0);
 	END
 
 
@@ -341,69 +344,69 @@ INSERT INTO [dbo].[Student] ([FirstName], [LastName], [Street], [City], [State],
 BEGIN
     USE [HalfTimeDB]
 INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Tuba', 'Brand New', 'Brass', 7, 'Championship Series', 1, 'Adams', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Piccolo', 'Used', 'Woodwind', 1, 'Championship Series', 1, 'Pearl', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Clarinet', 'Brand New', 'Woodwind', 2, 'Championship Series', 1, 'Yamaha', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Saxophone', 'Brand New', 'Brass', 3, 'Championship Series', 1, 'Yamaha', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Trumpet', 'Brand New', 'Brass', 10, 'Championship Series', 1, 'Adams', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Mellophone', 'Brand New', 'Brass', 4, 'Championship Series', 1, 'Adams', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Trombone', 'Brand New', 'Brass', 5, 'Championship Series', 1, 'Yamaha', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Baritone', 'Brand New', 'Brass', 6, 'Championship Series', 1, 'Adams', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Tuba', 'Brand New', 'Brass', 7, 'Championship Series', 1, 'Adams', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 8, 'Championship Series', 1, 'Pearl', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Flute', 'Used', 'Percussion', 11, 'Competitor Series', 1, 'Yamaha', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 12, 'Championship Series', 1, 'Pearl', 'FFX1412M/C124', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Piccolo', 'Used', 'Woodwind', 1, 'Proline Series', 1, 'Pearl', 'MQ8300', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Clarinet', 'Brand New', 'Woodwind', 2, 'Competitor Series', 1, 'Yamaha', 'PMTM8456', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Saxophone', 'Brand New', 'Brass', 3, 'Student Series', 1, 'Jupiter', 'MS9300', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Trumpet', 'Brand New', 'Brass', 10, 'Championship Series', 1, 'Adams', 'DMP925', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Mellophone', 'Brand New', 'Brass', 4, 'Proline Series', 1, 'KHS America', 'FFXm1412M/C', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Trombone', 'Brand New', 'Brass', 5, 'Competitor Series', 1, 'Yamaha', 'TB800', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Baritone', 'Brand New', 'Brass', 6, 'Championship Series', 1, 'Adams', 'BB340', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Tuba', 'Brand New', 'Brass', 7, 'Flagship Series', 1, 'Adams', 'TB8250', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 8, 'Championship Series', 1, 'Pearl', '764', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Flute', 'Used', 'Percussion', 11, 'Competitor Series', 1, 'Yamaha', 'MW2414BX', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 12, 'Championship Series', 1, 'Mapex', 'RD2700', 0);
 INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Brass', 'Brand New', 'Percussion', 13, 'Competitor Series', 1, 'Dynasty', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 14, 'Championship Series', 1, 'Adams', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Clarinet', 'Like New', 'Percussion', 15, 'Championship Series', 1, 'Pearl', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 16, 'Competitor Series', 1, 'Pearl', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Mallets', 'Used', 'Front Ensemble', 17, 'Championship Series', 1, 'Yamaha', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 18, 'Competitor Series', 1, 'Pearl', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Trombone', 'Used', 'Percussion', 19, 'Competitor Series', 1, 'KHS', 'FFX1412M/C124', 0);
-INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Like New', 'Percussion', 20, 'Championship Series', 1, 'Mapex', 'FFX1412M/C124', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 14, 'Competitor Series', 1, 'Adams', 'MDCG13', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Clarinet', 'Like New', 'Percussion', 15, 'Proline Series', 1, 'Conn-Selmer', '765RBE', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 16, 'Competitor Series', 1, 'Pearl', 'MUS1480', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Mallets', 'Used', 'Front Ensemble', 17, 'Proline Series', 1, 'Yamaha', 'FFX1412M/C103', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Brand New', 'Percussion', 18, 'Competitor Series', 1, 'Jupiter', 'RS525SC', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Trombone', 'Used', 'Percussion', 19, 'Flagship Series', 1, 'KHS', 'DC1465S', 0);
+INSERT INTO [dbo].[Instrument] ([Name], [Condition], [Category], [StudentId], [Description], [Quantity], [Brand], [ModelNumber], [IsDeleted]) VALUES ('Snare Drum', 'Like New', 'Percussion', 20, 'Student Series', 1, 'Mapex', 'YMP204MS', 0);
 
 	END
 
 -- Uniform
 BEGIN
     USE [HalfTimeDB]
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XL', 'New', 1, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('L', 'Like New', 2, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('2XL', 'Used', 3, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XL', 'New', 4, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('M', 'Like New', 5, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('2XL', 'Used', 6, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('L', 'New', 7, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XL', 'Like New', 8, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('L', 'Used', 9, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XL', 'New', 10, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XS', 'Like New', 11, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('S', 'Used', 12, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XS', 'New', 13, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('3XL', 'Like New', 14, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XL', 'Used', 15, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('S', 'Used', 16, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('L', 'Like New', 17, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('L', 'Used', 18, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('2XL', 'Like New', 19, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('L', 'Used', 20, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('M', 'Like New', 21, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('S', 'Used', 22, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('2XL', 'Used', 23, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XL', 'Like New', 24, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('M', 'Like New', 25, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('3XL', 'New', 26, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('M', 'Used', 27, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('XS', 'New', 28, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('2XL', 'Like Used', 29, 0);
-INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('L', 'New', 30, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Large', 'New', 1, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Large', 'Like New', 2, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Double Extra Large', 'Used', 3, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Large', 'New', 4, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Medium', 'Like New', 5, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Double Extra Large', 'Used', 6, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Large', 'New', 7, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Large', 'Like New', 8, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Large', 'Used', 9, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Large', 'New', 10, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Small', 'Like New', 11, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Small', 'Used', 12, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Small', 'New', 13, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Triple Extra Large', 'Like New', 14, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Large', 'Used', 15, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Small', 'Used', 16, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Large', 'Like New', 17, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Large', 'Used', 18, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Double Extra Large', 'Like New', 19, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Large', 'Used', 20, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Medium', 'Like New', 21, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Small', 'Used', 22, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Double Extra Large', 'Used', 23, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Large', 'Like New', 24, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Medium', 'Like New', 25, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Triple Extra Large', 'New', 26, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Medium', 'Used', 27, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Extra Small', 'New', 28, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Double Extra Large', 'Like Used', 29, 0);
+INSERT INTO [dbo].[Uniform] ([Size], [Condition], [StudentId], [IsDeleted]) VALUES ('Large', 'New', 30, 0);
 
 	END
 
 	-- Volunteer
 BEGIN
     USE [HalfTimeDB]
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [IsDeleted]) VALUES ('Lance', 'Bass', '200 Erin Ln', 'Nashville', 'TN', '37221', '+12052278229', 0);
-	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [IsDeleted]) VALUES ('Laura', 'White', 'Twilio Test', 'Nashville', 'TN', '37221', '+12054057575', 0);
+	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [IsDeleted]) VALUES ('Lance', 'Greshman', '200 Erin Ln', 'Nashville', 'TN', '37221', '+12052278229', 0);
+	INSERT INTO [dbo].[Volunteer] ([FirstName], [LastName], [Street], [City], [State], [Zipcode], [PhoneNumber], [IsDeleted]) VALUES ('Laura', 'Billings', '5641 Astoria Ln', 'Nashville', 'TN', '37221', '+12054057575', 0);
 	END
 
 -- UserEventJoin
@@ -415,24 +418,30 @@ INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,3);
 INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,4);
 INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,5);
 INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,6);
-INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (2,1);
-INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (2,2);
-INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (2,3);
-INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (2,4);
-INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (2,5);
-INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (2,6);
+INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,7);
+INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,8);
+INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,9);
+INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,10);
+INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,11);
+INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,12);
+INSERT INTO [dbo].[UserEventJoin] ([UserId], [EventId]) VALUES (1,13);
 
 	END
 
 -- UserInstrumentJoin
 BEGIN
     USE [HalfTimeDB]
-INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (2,1);
-INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (2,2);
-INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (2,3);
-INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (2,4);
-INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (2,5);
-INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (2,6);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,1);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,2);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,3);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,4);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,5);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,6);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,7);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,8);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,9);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,10);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,11);
 INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,12);
 INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,13);
 INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,14);
@@ -441,6 +450,7 @@ INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,16);
 INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,17);
 INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,18);
 INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,19);
+INSERT INTO [dbo].[UserInstrumentJoin] ([UserId], [InstrumentId]) VALUES (1,20);
 
 	END
 
@@ -453,12 +463,32 @@ INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,3);
 INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,4);
 INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,5);
 INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,6);
-INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (2,1);
-INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (2,2);
-INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (2,3);
-INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (2,4);
-INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (2,5);
-INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (2,6);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,7);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,8);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,9);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,10);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,11);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,12);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,13);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,14);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,15);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,16);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,17);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,18);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,19);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,20);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,21);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,22);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,23);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,24);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,25);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,26);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,27);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,28);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,29);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,30);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,31);
+INSERT INTO [dbo].[UserStudentJoin] ([UserId], [StudentId]) VALUES (1,32);
 
 	END
 
@@ -471,12 +501,17 @@ INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,3);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,4);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,5);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,6);
-INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (2,1);
-INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (2,2);
-INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (2,3);
-INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (2,4);
-INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (2,5);
-INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (2,6);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,1);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,2);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,3);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,4);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,5);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,6);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,7);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,8);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,9);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,10);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,11);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,12);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,13);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,14);
@@ -485,6 +520,17 @@ INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,16);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,17);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,18);
 INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,19);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,20);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,21);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,22);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,23);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,24);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,25);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,26);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,27);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,28);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,29);
+INSERT INTO [dbo].[UserUniformJoin] ([UserId], [UniformId]) VALUES (1,30);
 
 END
 
